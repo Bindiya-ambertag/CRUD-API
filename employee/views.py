@@ -3,7 +3,6 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 from bson import ObjectId
-
 from .db import employee_collection
 from .serializers import EmployeeSerializer
 
@@ -18,6 +17,7 @@ def employee_list(request):
         return Response(employees)
 
     if request.method == 'POST':
+
         serializer = EmployeeSerializer(data=request.data)
         if serializer.is_valid():
             employee_collection.insert_one(serializer.validated_data)
