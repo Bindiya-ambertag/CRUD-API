@@ -55,6 +55,7 @@ from rest_framework import status
 
 from .serializers import EmployeeSerializer
 from . import queries
+from django.shortcuts import render
 
 
 class EmployeeListView(APIView):
@@ -94,3 +95,11 @@ class EmployeeDetailView(APIView):
         if deleted:
             return Response({"message": "Employee deleted"})
         return Response({"error": "Employee not found"}, status=404)
+
+def employee_page(request):
+    employees = queries.get_all_employees()  # reuse existing logic
+    return render(
+        request,
+        "employee/employee_list.html",
+        {"employees": employees}
+    )
