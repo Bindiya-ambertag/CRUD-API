@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load employee_filters %}
+
+{% block content %}
+
+<h3>Employee List</h3>
+
+{% if employees %}
+<table border="1" cellpadding="8">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Designation</th>
+        <th>Salary</th>
+    </tr>
+
+    {% for emp in employees %}
+    <tr>
+        <td>{{ emp.name|upper }}</td>
+        <td>{{ emp.email|default_na }}</td>
+        <td>{{ emp.designation|default_na }}</td>
+        <td>{{ emp.salary|currency }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No employees found</p>
+{% endif %}
+
+{% endblock %}
