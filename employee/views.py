@@ -52,51 +52,68 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+import logging
 from .serializers import EmployeeSerializer
 from . import queries
 from django.shortcuts import render
 
+logger = logging.getLogger(__name__)
 
 class EmployeeListView(APIView):
 
     def get(self, request):
+        logger.info("GET /employees called by user=%s", request.user)
         employees = queries.get_all_employees()
-        return Response(employees)   # serializer not needed for list
+        logger.debug("Employees fetched count=%s", len(employees))
+        return Response(employees)
 
     def post(self, request):
+        logger.info("POST /employees called by user=%s", request.user)
         serializer = EmployeeSerializer(data=request.data)
         if serializer.is_valid():
             emp_id = queries.create_employee(serializer.validated_data)
+            logger.info("Employee created successfully with id=%s", emp_id)
             return Response(
                 {"message": "Employee created", "id": emp_id},
                 status=status.HTTP_201_CREATED
             )
+
+        logger.warning("Employee creation failed: %s", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class EmployeeDetailView(APIView):
 
     def get(self, request, id):
+        logger.info("GET /employees/%s called by user=%s", id, request.user)
         employee = queries.get_employee_by_id(id)
         if not employee:
+            logger.warning("Employee not found id=%s", id)
             return Response({"error": "Employee not found"}, status=404)
         return Response(employee)
 
     def put(self, request, id):
+        logger.info("PUT /employees/%s called by user=%s", id, request.user)
+
         serializer = EmployeeSerializer(data=request.data)
         if serializer.is_valid():
             updated = queries.update_employee(id, serializer.validated_data)
+            logger.info("Employee updated id=%s", id)
             return Response(updated)
+        logger.warning("Employee update failed id=%s errors=%s", id, serializer.errors)
         return Response(serializer.errors, status=400)
 
     def delete(self, request, id):
+        logger.info("DELETE /employees/%s called by user=%s", id, request.user)
         deleted = queries.delete_employee(id)
         if deleted:
+            logger.info("Employee deleted id=%s", id)
             return Response({"message": "Employee deleted"})
+        logger.warning("Employee delete failed, not found id=%s", id)
         return Response({"error": "Employee not found"}, status=404)
 
 def employee_page(request):
+    logger.info("Employee page accessed by user=%s", request.user)
     employees = queries.get_all_employees()  # reuse existing logic
     return render(
         request,
