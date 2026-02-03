@@ -1,0 +1,33 @@
+[INFO] 2026-02-03 11:04:02,628 django.utils.autoreload (autoreload.py:681) : Watching for file changes with StatReloader
+[WARNING] 2026-02-03 11:06:48,741 django.request (log.py:249) : Method Not Allowed: /api/token/
+[WARNING] 2026-02-03 11:06:48,749 django.server (log.py:249) : "GET /api/token/ HTTP/1.1" 405 40
+[WARNING] 2026-02-03 11:08:59,419 django.request (log.py:249) : Method Not Allowed: /api/token/
+[WARNING] 2026-02-03 11:08:59,425 django.server (log.py:249) : "GET /api/token/ HTTP/1.1" 405 40
+[WARNING] 2026-02-03 11:09:03,281 django.request (log.py:249) : Method Not Allowed: /api/token/
+[WARNING] 2026-02-03 11:09:03,281 django.server (log.py:249) : "GET /api/token/ HTTP/1.1" 405 40
+[WARNING] 2026-02-03 11:12:23,556 django.request (log.py:249) : Method Not Allowed: /api/token/
+[WARNING] 2026-02-03 11:12:23,846 django.server (log.py:249) : "GET /api/token/ HTTP/1.1" 405 40
+[INFO] 2026-02-03 11:12:46,479 django.server (log.py:249) : "POST /api/token/ HTTP/1.1" 200 489
+[WARNING] 2026-02-03 11:14:02,165 django.request (log.py:249) : Unauthorized: /api/employees/
+[WARNING] 2026-02-03 11:14:02,167 django.server (log.py:249) : "GET /api/employees/ HTTP/1.1" 401 172
+[INFO] 2026-02-03 11:14:58,599 django.server (log.py:249) : "POST /api/token/ HTTP/1.1" 200 489
+[INFO] 2026-02-03 11:15:56,802 employee.views (views.py:65) : GET /employees called by user=Bindiya
+[DEBUG] 2026-02-03 11:15:56,846 employee.views (views.py:67) : Employees fetched count=3
+[INFO] 2026-02-03 11:15:56,847 django.server (log.py:249) : "GET /api/employees/ HTTP/1.1" 200 346
+[INFO] 2026-02-03 11:18:32,551 employee.views (views.py:88) : GET /employees/6969dfabdcd1ab56ad28ade7 called by user=Bindiya
+[INFO] 2026-02-03 11:18:32,558 django.server (log.py:249) : "GET /api/employees/6969dfabdcd1ab56ad28ade7/ HTTP/1.1" 200 109
+[INFO] 2026-02-03 11:19:03,286 employee.views (views.py:96) : PUT /employees/6969dfabdcd1ab56ad28ade7 called by user=Bindiya
+[INFO] 2026-02-03 11:19:03,366 employee.views (views.py:101) : Employee updated id=6969dfabdcd1ab56ad28ade7
+[INFO] 2026-02-03 11:19:03,367 django.server (log.py:249) : "PUT /api/employees/6969dfabdcd1ab56ad28ade7/ HTTP/1.1" 200 117
+[INFO] 2026-02-03 11:20:22,785 employee.views (views.py:71) : POST /employees called by user=Bindiya
+[INFO] 2026-02-03 11:20:22,793 employee.views (views.py:75) : Employee created successfully with id=69818c9ee0adb50971bad7e4
+[INFO] 2026-02-03 11:20:22,795 django.server (log.py:249) : "POST /api/employees/ HTTP/1.1" 201 62
+[INFO] 2026-02-03 11:21:14,288 employee.views (views.py:88) : GET /employees/69818c9ee0adb50971bad7e4 called by user=Bindiya
+[INFO] 2026-02-03 11:21:14,291 django.server (log.py:249) : "GET /api/employees/69818c9ee0adb50971bad7e4/ HTTP/1.1" 200 117
+[INFO] 2026-02-03 11:21:22,576 employee.views (views.py:107) : DELETE /employees/69818c9ee0adb50971bad7e4 called by user=Bindiya
+[INFO] 2026-02-03 11:21:22,583 employee.views (views.py:110) : Employee deleted id=69818c9ee0adb50971bad7e4
+[INFO] 2026-02-03 11:21:22,583 django.server (log.py:249) : "DELETE /api/employees/69818c9ee0adb50971bad7e4/ HTTP/1.1" 200 30
+[INFO] 2026-02-03 11:21:27,000 employee.views (views.py:88) : GET /employees/69818c9ee0adb50971bad7e4 called by user=Bindiya
+[WARNING] 2026-02-03 11:21:27,001 employee.views (views.py:91) : Employee not found id=69818c9ee0adb50971bad7e4
+[WARNING] 2026-02-03 11:21:27,002 django.request (log.py:249) : Not Found: /api/employees/69818c9ee0adb50971bad7e4/
+[WARNING] 2026-02-03 11:21:27,003 django.server (log.py:249) : "GET /api/employees/69818c9ee0adb50971bad7e4/ HTTP/1.1" 404 30
